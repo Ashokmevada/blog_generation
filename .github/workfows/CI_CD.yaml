@@ -7,11 +7,11 @@ on:
 
 env:
   AWS_REGION: us-east-1
-  ECR_REPOSITORY: stroke-prediction
-  ECS_SERVICE: stroke_service
-  ECS_CLUSTER: stroke_cluster
-  ECS_TASK_DEFINITION: stroke_task-revision2.json
-  CONTAINER_NAME: stroke_container
+  ECR_REPOSITORY: blog_generation
+  ECS_SERVICE: blog_service
+  ECS_CLUSTER: blog_cluster
+  ECS_TASK_DEFINITION: blog_taskdefinition.json
+  CONTAINER_NAME: blog_container
 
 jobs:
   CI_job:
