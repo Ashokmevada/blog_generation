@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Title Input</title>
+</head>
+<body>
+    <h1>Enter the title of your blog</h1>
+    <form id="blogForm">
+        <label for="blogTitle">Title:</label>
+        <input type="text" id="blogTitle" name="blogTitle" required>
+        <button type="submit">Generate</button>
+    </form>
+
+    <div id="response">
+        <h2>Title:</h2>
+        <p id="blogTitleResponse"></p>
+        <h2>Content:</h2>
+        <p id="blogContentResponse"></p>
+    </div> <!-- This div will hold the response from the Flask API -->
+
+    <script>
+        document.getElementById('blogForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Get the value of the blog title input
+            var title = document.getElementById('blogTitle').value;
+
+            // Send the data to the Flask API
+            fetch('/generate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ title: title })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Response from server:', data);
+                // Display the response on the webpage
+                document.getElementById('blogTitleResponse').innerText = data.title;
+                document.getElementById('blogContentResponse').innerText = data.content;
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+                // Handle errors here, such as displaying an error message to the user
+            });
+        });
+    </script>
+</body>
+</html>

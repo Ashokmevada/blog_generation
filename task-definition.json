@@ -1,0 +1,52 @@
+{
+    "family": "blog_task",
+    "containerDefinitions": [
+        {
+            "name": "blog_container",
+            "image": "225408753340.dkr.ecr.us-east-1.amazonaws.com/blog_generation_repo:latest",
+            "cpu": 0,
+            "portMappings": [
+                {
+                    "name": "blog_container-5000-tcp",
+                    "containerPort": 5000,
+                    "hostPort": 5000,
+                    "protocol": "tcp",
+                    "appProtocol": "http"
+                }
+            ],
+            "essential": true,
+            "environment": [
+                {
+                    "name": "GEN_API_KEY",
+                    "value": "AIzaSyCToG_Ez451TnVcIzU3XOskRJ7O2i5I5Mw"
+                }
+            ],
+            "environmentFiles": [],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "ulimits": [],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-create-group": "true",
+                    "awslogs-group": "/ecs/blog_task",
+                    "awslogs-region": "us-east-1",
+                    "awslogs-stream-prefix": "ecs"
+                },
+                "secretOptions": []
+            },
+            "systemControls": []
+        }
+    ],
+    "executionRoleArn": "arn:aws:iam::225408753340:role/ecsTaskExecutionRole",
+    "networkMode": "awsvpc",
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "cpu": "1024",
+    "memory": "3072",
+    "runtimePlatform": {
+        "cpuArchitecture": "X86_64",
+        "operatingSystemFamily": "LINUX"
+    }
+}
