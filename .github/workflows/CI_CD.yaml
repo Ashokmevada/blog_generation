@@ -10,7 +10,7 @@ env:
   ECR_REPOSITORY: blog_generation
   ECS_SERVICE: blog_service
   ECS_CLUSTER: blog_cluster
-  ECS_TASK_DEFINITION: blog_taskdefinition.json
+  ECS_TASK_DEFINITION: blog_task-revision2.json
   CONTAINER_NAME: blog_container
 
 jobs:
