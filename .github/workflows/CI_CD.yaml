@@ -12,7 +12,7 @@ env:
   ECS_CLUSTER: blog_cluster
   ECS_TASK_DEFINITION: blog_task-revision2.json
   CONTAINER_NAME: blog_container
-
+  
 jobs:
   CI_job:
     runs-on: ubuntu-latest
